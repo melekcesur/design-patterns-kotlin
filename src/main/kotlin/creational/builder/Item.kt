@@ -9,7 +9,7 @@ class Item {
     }
 
     override fun toString(): String {
-        return "Properties of the item, are : \n$mProperties\n"
+        return "Properties of the item, are : \n$mProperties"
     }
 
 }
