@@ -1,7 +1,11 @@
 import creational.builder.FirstBuilder
 import creational.builder.IBuilder
 import creational.builder.SecondBuilder
-import creational.factory.*
+import creational.factory.product.*
+import creational.factory.task.Task
+import creational.factory.task.TaskFactory
+import creational.factory.task.TaskType
+import creational.factory.task.TypeFactory
 import creational.singleton.ItemProvider
 
 fun main() {
@@ -34,7 +38,7 @@ private fun testSingleton() {
 }
 
 private fun testFactory() {
-    println("\n### Factory Pattern Test ###\n")
+    println("\n### Factory Pattern Test 1 ###\n")
 
     val firstProductFactory: ProductFactory = FirstProductFactory()
     val firstProduct: Product = firstProductFactory.produce()
@@ -47,4 +51,13 @@ private fun testFactory() {
     val thirdProductFactory: ProductFactory = ThirdProductFactory()
     val thirdProduct: Product = thirdProductFactory.produce()
     thirdProduct.prepare()
+
+    println("\n### Factory Pattern Test 2 ###\n")
+    val taskFactory: TaskFactory = TypeFactory()
+
+    val firstTaskType: Task = taskFactory.createTask(TaskType.FirstTaskType)
+    firstTaskType.createCustomizer().check()
+
+    val secondTaskType: Task = taskFactory.createTask(TaskType.SecondTaskType)
+    secondTaskType.createCustomizer().complete()
 }

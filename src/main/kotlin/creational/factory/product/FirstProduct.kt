@@ -1,4 +1,4 @@
-package creational.factory
+package creational.factory.product
 
 class FirstProduct : Product {
     override fun prepare() {
